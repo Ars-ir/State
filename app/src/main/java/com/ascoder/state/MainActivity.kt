@@ -26,7 +26,9 @@ fun ComponentContainer() {
 
 @Composable
 fun ColorBox(modifier: Modifier = Modifier) {
-    Box()
+    Box(modifier = Modifier
+        .background(Color.Yellow)
+    )
 }
 
 @Preview(showBackground = true)
