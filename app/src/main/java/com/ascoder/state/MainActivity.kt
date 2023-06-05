@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -28,6 +29,7 @@ fun ComponentContainer() {
 fun ColorBox(modifier: Modifier = Modifier) {
     Box(modifier = Modifier
         .background(Color.Yellow)
+        .clickable {  }
     )
 }
 
