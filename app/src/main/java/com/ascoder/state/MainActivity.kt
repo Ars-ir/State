@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -27,24 +28,44 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ComponentContainer() {
+    val color by remember { lazy { mutableStateOf(Color.Yellow) } }
+
     Column(Modifier.fillMaxSize()) {
-        
+        ColorBox(
+            Modifier
+                .weight(1f)
+                .fillMaxSize()
+        ) {
+            color.value = it
+        }
+        AnotherColorBox(
+            Modifier
+                .weight(1f)
+                .fillMaxSize(),
+            color
+        )
     }
-    ColorBox(Modifier.fillMaxSize())
 }
 
 @Composable
-fun ColorBox(modifier: Modifier = Modifier) {
-    val color by remember { lazy { mutableStateOf(Color.Yellow) } }
-
+fun AnotherColorBox(modifier: Modifier = Modifier, color: MutableState<Color>) {
     Box(modifier = modifier
         .background(color = color.value)
+    )
+}
+
+@Composable
+fun ColorBox(modifier: Modifier = Modifier, updateColor: (Color) -> Unit) {
+    Box(modifier = modifier
+        .background(color = Color.Red)
         .clickable {
-            color.value = Color(
-                Random.nextFloat(),
-                Random.nextFloat(),
-                Random.nextFloat(),
-                1f
+            updateColor(
+                Color(
+                    Random.nextFloat(),
+                    Random.nextFloat(),
+                    Random.nextFloat(),
+                    1f
+                )
             )
         }
     )
