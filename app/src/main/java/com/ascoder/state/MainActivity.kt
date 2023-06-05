@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -24,7 +25,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ComponentContainer() {
-    ColorBox()
+    ColorBox(Modifier.fillMaxSize())
 }
 
 @Composable
@@ -33,9 +34,7 @@ fun ColorBox(modifier: Modifier = Modifier) {
 
     Box(modifier = Modifier
         .background(color = color.value)
-        .clickable {
-
-        }
+        .clickable { }
     )
 }
 
