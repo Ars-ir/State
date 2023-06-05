@@ -1,5 +1,6 @@
 package com.ascoder.state
 
+import kotlin.random.Random
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -32,9 +33,16 @@ fun ComponentContainer() {
 fun ColorBox(modifier: Modifier = Modifier) {
     val color by remember { lazy { mutableStateOf(Color.Yellow) } }
 
-    Box(modifier = Modifier
+    Box(modifier = modifier
         .background(color = color.value)
-        .clickable { }
+        .clickable {
+            color.value = Color(
+                Random.nextFloat(),
+                Random.nextFloat(),
+                Random.nextFloat(),
+                1f
+            )
+        }
     )
 }
 
