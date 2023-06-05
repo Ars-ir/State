@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
 class MainActivity : ComponentActivity() {
@@ -17,6 +18,11 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ComponentContainer() {
+    ColorBox()
+}
+
+@Composable
+fun ColorBox(modifier: Modifier = Modifier) {
 
 }
 
